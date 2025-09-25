@@ -63,10 +63,10 @@ export default function InfoSecLaughterGenerator() {
                   </Button>
                 </div>
               ) : (
-                <div className="space-y-4 sm:space-y-6 animate-fade-slide-up">
+                <div className="space-y-6 animate-fade-slide-up">
                   {/* Answer */}
-                  <div className="bg-accent/10 border border-accent/30 rounded-lg p-4 sm:p-6 text-center">
-                    <p className="text-base sm:text-xl font-medium text-accent mb-2 sm:mb-4 break-words">
+                  <div className="bg-accent/10 border border-accent/30 rounded-lg p-6 text-center">
+                    <p className="text-xl font-medium text-accent mb-4">
                       {currentJoke.answer} 😂
                     </p>
                     {isFirstJoke && (
