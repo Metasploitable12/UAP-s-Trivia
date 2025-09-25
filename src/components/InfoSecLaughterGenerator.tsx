@@ -100,14 +100,14 @@ export default function InfoSecLaughterGenerator() {
             className="flex items-center gap-2 sm:gap-3 px-4 sm:px-8 py-2 sm:py-4 text-base sm:text-lg border-accent text-accent hover:bg-accent/10"
           >
             <RefreshCw className="w-5 h-5" />
-            Give me another joke! 😂
+            Give me another joke! 
           </Button>
           <Button
             onClick={openSecurityWiki}
             className="flex items-center gap-2 sm:gap-3 bg-primary hover:bg-primary/90 text-primary-foreground px-4 sm:px-8 py-2 sm:py-4 text-base sm:text-lg"
           >
             <ExternalLink className="w-5 h-5" />
-            Explore InfoSec initiatives ✅
+            Explore InfoSec initiatives 
           </Button>
         </div>
 
