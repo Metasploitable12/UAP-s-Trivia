@@ -14,18 +14,13 @@ export const stockholmJoke: SecurityJoke = {
 export const securityJokes: SecurityJoke[] = [
   {
     question: "Why did the computer go to therapy?",
-    answer: "Too many unresolved issues.",
+    answer: "It was dealing with too many unresolved issues.",
     lesson: "Keep software and systems patched regularly."
   },
   {
     question: "Why did the hacker break up with their partner?",
     answer: "They just couldn't trust them anymore.",
     lesson: "Trust is central — verify before you click or share data."
-  },
-  {
-    question: "Why was the computer cold?",
-    answer: "It left its Windows open.",
-    lesson: "Unsecured systems are entry points for attackers."
   },
   {
     question: "Why don't hackers take vacations?",
@@ -36,16 +31,6 @@ export const securityJokes: SecurityJoke[] = [
     question: "Why did the email look suspicious?",
     answer: "Because it had too many attachments.",
     lesson: "Don't open unknown attachments — they may contain malware."
-  },
-  {
-    question: "What's a hacker's favorite season?",
-    answer: "Phishing season!",
-    lesson: "Always spot and report phishing attempts."
-  },
-  {
-    question: "Why did the IT guy bring a ladder to work?",
-    answer: "To reach the cloud.",
-    lesson: "Cloud security matters — treat it like your own data center."
   },
   {
     question: "Why did the password go to jail?",
@@ -108,7 +93,7 @@ export const securityJokes: SecurityJoke[] = [
     lesson: "Secure Wi-Fi with strong encryption and passwords."
   },
   {
-    question: "Why was the cybersecurity quiz so easy?",
+    question: "Why was the opt-out assessment so easy?",
     answer: "Because it was just common sense.",
     lesson: "Awareness is often about practicing safe habits, not rocket science."
   }
