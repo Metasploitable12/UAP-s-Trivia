@@ -71,11 +71,7 @@ export default function InfoSecLaughterGenerator() {
                     </p>
                     {isFirstJoke && (
                       <div className="flex justify-center mt-4">
-                        <img 
-                          src={officeChair} 
-                          alt="Missing office chair" 
-                          className="w-32 h-32 object-contain rounded-lg"
-                        />
+                        
                       </div>
                     )}
                   </div>
