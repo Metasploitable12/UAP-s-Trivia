@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { Shield } from 'lucide-react';
+import { Shield, CheckCircle2, XCircle, Search } from 'lucide-react';
 import syncronLogo from '@/assets/syncron-logo.png';
 import wrong1 from '@/assets/wrong1.jpg';
 import wrong2 from '@/assets/wrong2.jpg';
@@ -36,22 +36,21 @@ export default function SecurityCaptcha({ onComplete }: SecurityCaptchaProps) {
 
   const handleIconClick = (index: number) => {
     if (showResult) return;
-    
-    if (selectedIcons.includes(index)) {
-      setSelectedIcons(selectedIcons.filter(i => i !== index));
-    } else {
-      setSelectedIcons([...selectedIcons, index]);
-    }
+
+    setSelectedIcons(prev =>
+      prev.includes(index) ? prev.filter(i => i !== index) : [...prev, index]
+    );
   };
 
   const handleVerify = () => {
     const correctIndices = captchaImages
-      .map((img, index) => img.isSecure ? index : -1)
+      .map((img, index) => (img.isSecure ? index : -1))
       .filter(index => index !== -1);
-    
-    const isAllCorrect = correctIndices.length === selectedIcons.length &&
-                        correctIndices.every(index => selectedIcons.includes(index));
-    
+
+    const isAllCorrect =
+      correctIndices.length === selectedIcons.length &&
+      correctIndices.every(index => selectedIcons.includes(index));
+
     setIsCorrect(isAllCorrect);
     setShowResult(true);
   };
@@ -66,51 +65,58 @@ export default function SecurityCaptcha({ onComplete }: SecurityCaptchaProps) {
   };
 
   return (
-    <div className="min-h-screen orange-theme bg-background flex flex-col justify-center items-center px-2 sm:px-4 py-4">
-      {/* Syncron branding header */}
-      <div className="w-full flex flex-col items-center gap-2 sm:gap-4 mb-8 mt-2 sm:mt-6">
-        <img src={syncronLogo} alt="Syncron" className="w-12 h-12" />
-        <span className="text-primary font-bold text-2xl text-center leading-tight break-words">Syncron Security Awareness Month</span>
+    <div className="min-h-screen bg-gradient-to-b from-orange-50 to-white flex flex-col justify-center items-center px-4 py-8 relative overflow-hidden">
+      
+      {/* Subtle background graphics */}
+      <div className="absolute inset-0 -z-10 opacity-20">
+        <div className="absolute top-20 left-10 w-72 h-72 bg-orange-200 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 right-10 w-72 h-72 bg-orange-300 rounded-full blur-3xl"></div>
       </div>
 
-      <div className="max-w-2xl w-full mx-auto px-2 sm:px-4 mt-20 sm:mt-24">
+      {/* Syncron branding header */}
+      <div className="flex flex-col items-center gap-4 mb-10">
+        <img src={syncronLogo} alt="Syncron" className="w-14 h-14 drop-shadow-md" />
+        <span className="text-orange-600 font-bold text-2xl sm:text-3xl tracking-tight">
+          Syncron Security Awareness Month
+        </span>
+      </div>
+
+      <div className="max-w-2xl w-full mx-auto">
         {/* Header */}
-        <div className="text-center mb-8 sm:mb-12">
-          <div className="flex flex-col items-center justify-center gap-2 sm:gap-4 mb-4 sm:mb-6">
-            <Shield className="w-12 h-12 sm:w-16 sm:h-16 text-accent mb-2" />
-            <h1 className="text-2xl sm:text-4xl md:text-6xl font-bold text-foreground break-words text-center leading-tight">
-              Captcha Verification
-            </h1>
-          </div>
-          <p className="text-base sm:text-xl md:text-2xl text-muted-foreground mb-2 sm:mb-4 text-center">
-            Please verify all security captcha
+        <div className="text-center mb-10">
+          <Shield className="w-14 h-14 sm:w-20 sm:h-20 text-orange-500 mb-4 mx-auto" />
+          <h1 className="text-3xl sm:text-5xl font-extrabold text-gray-800 mb-4">
+            Captcha Verification
+          </h1>
+          <p className="text-lg sm:text-xl text-gray-600 mb-2">
+            Verify your awareness skills
           </p>
-          <p className="text-sm sm:text-lg text-muted-foreground text-center">
-            Select all information security related images and find out what recently happened in Syncron.
+          <p className="text-sm sm:text-base text-gray-500">
+            Select all <span className="font-medium text-orange-600">security-related images</span> to proceed.
           </p>
         </div>
 
         {/* Captcha Grid */}
-        <Card className="mb-8 bg-card/50 backdrop-blur border-border">
-          <CardContent className="p-4 sm:p-8">
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4 mb-6 sm:mb-8">
+        <Card className="mb-10 bg-white/80 backdrop-blur border border-orange-200 shadow-lg rounded-2xl">
+          <CardContent className="p-6 sm:p-10">
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-6">
               {captchaImages.map((image, index) => (
                 <div
                   key={index}
-                  className={`relative cursor-pointer rounded-lg overflow-hidden border-4 transition-all duration-200 ${
+                  className={`relative cursor-pointer rounded-xl overflow-hidden border-4 transition-all duration-200 transform hover:scale-105 ${
                     selectedIcons.includes(index)
-                      ? 'border-primary bg-primary/20'
-                      : 'border-border hover:border-accent'
+                      ? 'border-orange-500 ring-2 ring-orange-300'
+                      : 'border-gray-200 hover:border-orange-300'
                   }`}
                   onClick={() => handleIconClick(index)}
                 >
                   <img
                     src={image.src}
                     alt={`Captcha option ${index + 1}`}
-                    className="w-full h-24 sm:h-32 object-cover"
+                    className="w-full h-28 sm:h-36 object-cover"
                   />
                   {selectedIcons.includes(index) && (
-                    <div className="absolute top-1 right-1 bg-primary text-primary-foreground rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold">
+                    <div className="absolute top-2 right-2 bg-orange-500 text-white rounded-full w-7 h-7 flex items-center justify-center text-sm font-bold shadow">
                       ✓
                     </div>
                   )}
@@ -119,34 +125,42 @@ export default function SecurityCaptcha({ onComplete }: SecurityCaptchaProps) {
             </div>
 
             {!showResult ? (
-              <div className="flex justify-center mt-2">
+              <div className="flex justify-center">
                 <Button
                   onClick={handleVerify}
                   disabled={selectedIcons.length === 0}
-                  className="bg-primary hover:bg-primary/90 text-primary-foreground px-4 sm:px-8 py-2 sm:py-4 text-base sm:text-lg"
+                  className="bg-orange-600 hover:bg-orange-700 text-white px-6 py-3 sm:px-10 sm:py-4 rounded-xl font-semibold text-lg transition-all duration-200 shadow-md hover:scale-105"
                 >
                   Verify Selection
                 </Button>
               </div>
             ) : (
-              <div className="text-center space-y-2 sm:space-y-4 animate-fade-slide-up">
-                <div className={`p-3 sm:p-4 rounded-lg ${
-                  isCorrect 
-                    ? 'bg-green-100 border border-green-300 text-green-800' 
-                    : 'bg-red-100 border border-red-300 text-red-800'
-                }`}>
-                  <p className="text-base sm:text-lg font-semibold">
-                    {isCorrect 
-                      ? '✅ Correct! Well done on identifying the security images.' 
-                      : '❌ Not quite right. Try again and select only the cybersecurity-related images.'}
-                  </p>
+              <div className="text-center space-y-4 animate-fade-slide-up">
+                <div
+                  className={`p-4 rounded-xl flex items-center justify-center gap-3 font-semibold ${
+                    isCorrect
+                      ? 'bg-green-50 border border-green-200 text-green-700'
+                      : 'bg-red-50 border border-red-200 text-red-700'
+                  }`}
+                >
+                  {isCorrect ? (
+                    <CheckCircle2 className="w-6 h-6 text-green-600" />
+                  ) : (
+                    <XCircle className="w-6 h-6 text-red-600" />
+                  )}
+                  <span>
+                    {isCorrect
+                      ? 'Correct! You identified the security images.'
+                      : 'Not quite right. Try again and select only the cybersecurity-related images.'}
+                  </span>
                 </div>
                 <Button
                   onClick={handleContinue}
-                  className={isCorrect 
-                    ? "bg-green-600 hover:bg-green-700 text-white px-4 sm:px-8 py-2 sm:py-4 text-base sm:text-lg"
-                    : "bg-red-600 hover:bg-red-700 text-white px-4 sm:px-8 py-2 sm:py-4 text-base sm:text-lg"
-                  }
+                  className={`px-6 py-3 sm:px-10 sm:py-4 rounded-xl font-semibold text-lg shadow-md hover:scale-105 ${
+                    isCorrect
+                      ? 'bg-green-600 hover:bg-green-700 text-white'
+                      : 'bg-red-600 hover:bg-red-700 text-white'
+                  }`}
                 >
                   {isCorrect ? 'Continue' : 'Try Again'}
                 </Button>
@@ -156,10 +170,9 @@ export default function SecurityCaptcha({ onComplete }: SecurityCaptchaProps) {
         </Card>
 
         {/* Footer message */}
-        <div className="text-center text-muted-foreground mt-6">
-          <p className="text-xs sm:text-sm">
-            Security awareness starts with recognizing threats! 🔍
-          </p>
+        <div className="text-center text-gray-500 mt-6 flex items-center justify-center gap-2">
+          <Search className="w-4 h-4" />
+          <p className="text-sm">Security awareness starts with recognizing threats.</p>
         </div>
       </div>
     </div>
