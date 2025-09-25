@@ -1,0 +1,168 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Syncron Security Awareness App Design System
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Cyber Security Theme Colors - Ransomware page only */
+    --background: 220 20% 8%;
+    --foreground: 210 40% 98%;
+
+    --card: 220 25% 12%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 220 25% 12%;
+    --popover-foreground: 210 40% 98%;
+
+    /* Syncron Orange as Primary */
+    --primary: 24 100% 54%;
+    --primary-foreground: 0 0% 100%;
+
+    /* White Secondary for Orange theme */
+    --secondary: 0 0% 100%;
+    --secondary-foreground: 24 100% 54%;
+
+    /* Orange Accent */
+    --accent: 24 100% 54%;
+    --accent-foreground: 0 0% 100%;
+
+    /* Muted Orange/White Colors */
+    --muted: 24 50% 95%;
+    --muted-foreground: 24 50% 40%;
+
+    /* Warning Red */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* UI Elements */
+    --border: 24 50% 90%;
+    --input: 24 50% 95%;
+    --ring: 24 100% 54%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    /* Orange/White theme for consistency */
+    --background: 0 0% 100%;
+    --foreground: 24 100% 54%;
+    --card: 0 0% 100%;
+    --card-foreground: 24 100% 54%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 24 100% 54%;
+    --primary: 24 100% 54%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 0% 100%;
+    --secondary-foreground: 24 100% 54%;
+    --accent: 24 100% 54%;
+    --accent-foreground: 0 0% 100%;
+    --muted: 24 50% 95%;
+    --muted-foreground: 24 50% 40%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 24 50% 90%;
+    --input: 24 50% 95%;
+    --ring: 24 100% 54%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-mono;
+  }
+
+  /* Orange/White theme for non-ransomware pages */
+  .orange-theme {
+    --background: 0 0% 100%;
+    --foreground: 24 100% 54%;
+    --card: 0 0% 100%;
+    --card-foreground: 24 100% 54%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 24 100% 54%;
+    --primary: 24 100% 54%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 0% 100%;
+    --secondary-foreground: 24 100% 54%;
+    --accent: 24 100% 54%;
+    --accent-foreground: 0 0% 100%;
+    --muted: 24 50% 95%;
+    --muted-foreground: 24 50% 40%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 24 50% 90%;
+    --input: 24 50% 95%;
+    --ring: 24 100% 54%;
+  }
+
+  /* Custom animations for cyber security theme */
+  @keyframes glitch {
+    0% { transform: translate(0); }
+    20% { transform: translate(-2px, 2px); }
+    40% { transform: translate(-2px, -2px); }
+    60% { transform: translate(2px, 2px); }
+    80% { transform: translate(2px, -2px); }
+    100% { transform: translate(0); }
+  }
+  
+  @keyframes scan-line {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100vw); }
+  }
+  
+  @keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 0 20px hsl(var(--destructive) / 0.5); }
+    50% { box-shadow: 0 0 40px hsl(var(--destructive) / 0.8); }
+  }
+  
+  @keyframes fade-slide-up {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-glitch {
+    animation: glitch 0.3s ease-in-out infinite;
+  }
+  
+  .animate-scan {
+    animation: scan-line 2s linear infinite;
+  }
+  
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+  
+  .animate-fade-slide-up {
+    animation: fade-slide-up 0.6s ease-out forwards;
+  }
+}
