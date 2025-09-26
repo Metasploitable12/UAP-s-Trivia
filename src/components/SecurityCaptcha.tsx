@@ -25,7 +25,7 @@ const captchaImages = [
   { src: security2, isSecure: true, name: 'security2' },
   { src: wrong4, isSecure: false, name: 'wrong4' },
   { src: wrong5, isSecure: false, name: 'wrong5' },
-  { src: wrong6, isSecure: false, name: 'wrong6' },
+  { src: wrong6, isSecure: true, name: 'wrong6' },
   { src: wrong7, isSecure: false, name: 'wrong7' },
 ];
 
