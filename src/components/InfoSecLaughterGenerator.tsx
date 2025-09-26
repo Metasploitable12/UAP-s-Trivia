@@ -67,7 +67,7 @@ export default function InfoSecLaughterGenerator() {
                 onClick={revealAnswer}
                 className="bg-orange-600 hover:bg-orange-700 text-white px-6 sm:px-10 py-3 sm:py-4 rounded-xl font-semibold text-lg transition-all duration-200 shadow-md hover:scale-105"
               >
-                {isFirstJoke ? "Reveal what happened" : "Show me the punchline"}
+                {isFirstJoke ? "Tell me what? " : "Show me the punchline"}
               </Button>
             ) : (
               <div className="space-y-8 animate-fade-slide-up">
