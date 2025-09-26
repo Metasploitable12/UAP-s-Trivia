@@ -101,7 +101,7 @@ export default function InfoSecLaughterGenerator() {
             className="flex items-center gap-2 border-orange-400 text-orange-600 hover:bg-orange-50 px-6 sm:px-10 py-3 sm:py-4 rounded-xl font-semibold text-lg transition-all duration-200 hover:scale-105"
           >
             <RefreshCw className="w-5 h-5" />
-            Another Joke
+            Here’s one more…
           </Button>
           <Button
             onClick={openSecurityWiki}
